@@ -19,6 +19,8 @@
 (function () {
   'use strict';
 
+  console.log("mason");
+  
   var querySelector = document.querySelector.bind(document);
 
   var navdrawerContainer = querySelector('.navdrawer-container');
