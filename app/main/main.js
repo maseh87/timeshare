@@ -1,35 +1,27 @@
-angular.module('timeshare', [
-  "firebase", 'ui.router'
+angular.module('timeShare', [
+  'firebase',
+  'ui.router'
 ])
-.controller('MainController', function($scope, $firebaseObject){
+.controller('MainController', function($scope){
+  var ref = new Firebase("https://timeshare.firebaseio.com");
+  var users = ref.child('users');
   
-  $scope.data = $firebaseObject(ref);
-
+  $scope.fbLogin = function() {
+    ref.authWithOAuthPopup("facebook", function(error, authData){
+      if(error) {
+        console.log("Login Failed!", error);
+      } else {
+        console.log("Authenticated successfully with payload:", authData);
+        users.set({
+          name: authData.facebook.displayName,
+          id: authData.facebook.id
+        });
+      };
+  });
+  
+  ref.on('child_added', function(snapshot, prevChildKey){
+    var newUser = snapshot.val()
+    console.log('a new user named ' + newUser.name + ' was created');
+  });
 });
-
-var ref = new Firebase("https://timeshare.firebaseio.com");
-var users = ref.child('users');
- 
-function fbLogin() {
-   ref.authWithOAuthPopup("facebook", function(error, authData) {
-     if (error) {
-       console.log("Login Failed!", error);
-     } else {
-       console.log("Authenticated successfully with payload:", authData);
-       users.set({
-         name: authData.facebook.displayName,
-         id: authData.facebook.id
-       });
-     }
-   });
- }
-
-
-
- ref.on('child_added', function(snapshot, prevChildKey) {
-   var newUser = snapshot.val()
-   console.log('a new user named ' + newUser.name + ' was created');
- });
- 
-
-
+  

@@ -40,22 +40,19 @@
     <script src="lib/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="https://cdn.firebase.com/js/client/2.2.7/firebase.js"></script>
     <script src="https://cdn.firebase.com/libs/angularfire/1.1.2/angularfire.min.js"></script>
-    <script src="main/main.js"></script>
+    
 
 
 
     <div ng-controller="MainController"> 
-    <button type="button" name="button" onclick="fbLogin();">FB Login</button>
+      <button type="button" name="button" ng-click="fbLogin();">FB Login</button>
     </div>
 
 
-    <div id="status"></div>
 
     
 
-    <!-- build:js main/main.min.js -->
     
-    <!-- endbuild -->
 
   
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -68,5 +65,10 @@
       ga('send', 'pageview');
     </script>
     <!-- Built with love using Web Starter Kit -->
+
+
+    <!-- build:js main/main.min.js --> 
+    <script src="main/main.js"></script>
+    <!-- endbuild --> 
   </body>
 </html>
