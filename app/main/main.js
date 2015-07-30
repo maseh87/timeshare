@@ -17,11 +17,11 @@ angular.module('timeShare', [
           id: authData.facebook.id
         });
       };
-  });
+    });
+  }
   
   ref.on('child_added', function(snapshot, prevChildKey){
     var newUser = snapshot.val()
     console.log('a new user named ' + newUser.name + ' was created');
   });
 });
-  
