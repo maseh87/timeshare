@@ -1,7 +1,9 @@
 angular.module('timeshare', [
-
+  "firebase", 'ui.router'
 ])
-.controller('MainController', function($scope){
+.controller('MainController', function($scope, $firebaseObject){
+  
+  $scope.data = $firebaseObject(ref);
 
 });
 
