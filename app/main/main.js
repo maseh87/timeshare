@@ -1,13 +1,12 @@
+angular.module('timeshare', [
 
+])
+.controller('MainController', function($scope){
 
+});
 
-
-
-
-
-
- var ref = new Firebase("https://timeshare.firebaseio.com");
- var users = ref.child('users');
+var ref = new Firebase("https://timeshare.firebaseio.com");
+var users = ref.child('users');
  
 function fbLogin() {
    ref.authWithOAuthPopup("facebook", function(error, authData) {
